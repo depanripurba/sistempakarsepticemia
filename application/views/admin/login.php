@@ -2,72 +2,74 @@
 <html lang="en">
 
 <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?=$judul?></title>
-
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="<?=base_url('assets')?>/plugins/fontawesome-free/css/all.min.css">
-    <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="<?=base_url('assets')?>/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="<?=base_url('assets')?>/dist/css/adminlte.min.css">
-    <!-- Icon -->
-    <link rel="shortcut icon" href="<?=base_url('assets/img/logo.png')?>" type="image/x-icon">
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="<?=base_url('assets/template/')?>assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="<?=base_url('assets/template/')?>assets/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="<?=base_url('assets/template/')?>assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="<?=base_url('assets/template/')?>assets/vendors/font-awesome/css/font-awesome.min.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="<?=base_url('assets/template/')?>assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="<?=base_url('assets/img/')?>logo.png" />
 </head>
 
-<body class="hold-transition login-page">
-    <div class="login-box">
-        <!-- /.login-logo -->
-        <div class="card card-outline card-primary">
-            <div class="card-header text-center">
-                <a href="<?=base_url()?>"><img src="<?=base_url('assets/dist/img/logo.jpg')?>" width="200" alt=""></a>
+<body>
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="content-wrapper d-flex align-items-center auth">
+                <div class="row flex-grow">
+                    <div class="col-lg-6 d-flex align-items-center justify-content-center">
+                        <img src="<?=base_url('assets/img/logo.png')?>" style="max-width:250px" alt="">
+                    </div>
+                    <div class="col-lg-6 mx-auto">
+                        <div class="auth-form-light text-left p-5">
+                            <h4>SILAHKAN LOGIN TERLEBIH DAHULU</h4>
+                            <h6 class="font-weight-light">Login Admin</h6>
+                            <form class="pt-3" method="POST" action="<?=base_url('auth')?>">
+                                <?=$this->session->flashdata('message');?>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-lg" placeholder="Username"
+                                        id="username" name="username">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control form-control-lg" placeholder="Password"
+                                        id="password" name="password">
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <button type="submit" class="btn btn-success btn-fw">Login</button>
+                                    <button type="reset" class="btn btn-danger btn-fw">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <form action="<?=base_url("auth")?>" method="post">
-                    <?=$this->session->flashdata('message');?>
-                    <div class="input-group mb-3">
-                        <input name="username" type="text" class="form-control" placeholder="Username">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <span class="text-danger"><?php echo form_error('username'); ?></span>
-                    <div class="input-group mb-3">
-                        <input name="password" type="password" class="form-control" placeholder="Password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <span class="text-danger"><?php echo form_error('password'); ?></span>
-                    <div class="row">
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Login</button>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                </form>
-            </div>
-            <!-- /.card-body -->
+            <!-- content-wrapper ends -->
         </div>
-        <!-- /.card -->
+        <!-- page-body-wrapper ends -->
     </div>
-    <!-- /.login-box -->
-
-    <!-- jQuery -->
-    <script src="<?=base_url('assets')?>/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="<?=base_url('assets')?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="<?=base_url('assets')?>/dist/js/adminlte.min.js"></script>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="<?=base_url('assets/template/')?>assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="<?=base_url('assets/template/')?>assets/js/off-canvas.js"></script>
+    <script src="<?=base_url('assets/template/')?>assets/js/misc.js"></script>
+    <script src="<?=base_url('assets/template/')?>assets/js/settings.js"></script>
+    <script src="<?=base_url('assets/template/')?>assets/js/todolist.js"></script>
+    <script src="<?=base_url('assets/template/')?>assets/js/jquery.cookie.js"></script>
+    <!-- endinject -->
 </body>
-
 
 </html>

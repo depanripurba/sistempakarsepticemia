@@ -31,10 +31,10 @@ class Master extends CI_Controller
 		$this->db->from('tbl_pasien');
 		$data['pasien'] = $this->db->count_all_results();
 
-		$this->load->view('template/header',$data);
-		$this->load->view('template/sidebar', $data);
+		// $this->load->view('template/header',$data);
+		// $this->load->view('template/sidebar', $data);
 		$this->load->view('admin/dashboard',$data);
-		$this->load->view('template/footer');
+		// $this->load->view('template/footer');
 		// }
 	}
 
@@ -154,8 +154,8 @@ class Master extends CI_Controller
 		$data['kode'] = $this->Penyakit_model->getcode();
 		$data['aktif'] = 'datapenyakit';
 		$data['judul'] = 'Form Tambah Data Penyakit';
-		$this->load->view('template/header',$data);
-		$this->load->view('template/sidebar', $data);
+		// $this->load->view('template/header',$data);
+		// $this->load->view('template/sidebar', $data);
 		$this->load->view('admin/formtambahdatapenyakit');
 		$this->load->view('template/footer');
 	}
