@@ -1,65 +1,83 @@
-<!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="<?=base_url('master/index')?>" class="brand-link text-center mb-3">
-        <span class="brand-text font-weight-light text-center">Sistem Pakar</span>
-    </a>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item nav-profile">
+                        <a href="#" class="nav-link">
+                            <div class="nav-profile-image">
+                                <img src="<?=base_url('assets/img/')?>logo.png" alt="profile" />
+                                <span class="login-status online"></span>
+                                <!--change to offline or busy as needed-->
+                            </div>
+                            <div class="nav-profile-text d-flex flex-column">
+                                <span class="font-weight-bold mb-2">Dinas Perkebunan<br> dan Kehutanan</span>
+                                <span class="text-secondary text-small">Admin</span>
+                            </div>
+                            <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?=base_url('master/index')?>">
+                            <span class="menu-title">Dashboard</span>
+                            <i class="mdi mdi-home menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?=base_url('master/datagejala')?>">
+                            <span class="menu-title">Data Gejala</span>
+                            <i class="mdi mdi-medical-bag menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?=base_url('master/datapenyakit')?>">
+                            <span class="menu-title">Data Penyakit</span>
+                            <i class="fa fa-stethoscope menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?=base_url('master/basispengetahuan')?>">
+                            <span class="menu-title">Basis Pengetahuan</span>
+                            <i class="mdi mdi-chart-bar menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <span class="menu-title">Riwayat Konsultasi</span>
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <span class="menu-title">Data Laporan</span>
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <span class="menu-title">Data Riwayat Diagnosa</span>
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false"
+                            aria-controls="auth">
+                            <span class="menu-title">Administrator</span>
+                            <i class="menu-arrow"></i>
+                            <i class="mdi mdi-lock menu-icon"></i>
+                        </a>
+                        <div class="collapse" id="auth">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="pages/samples/blank-page.html"> Profil Admin </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="pages/samples/login.html"> Logout </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <div class="text-center">
-            <img src="<?= base_url('assets') ?>/dist/img/logo.jpg?>" class="rounded mb-2" alt="User Image" style="width:100%"/>
-        </div>
-
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item">
-                    <a href="<?=base_url('dashboard')?>" class="nav-link <?=$aktif==='home' ? 'active' : ''  ?>">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Dasboard Admin
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?=base_url('datagejala')?>" class="nav-link <?=$aktif==='datagejala' ? 'active' : ''  ?>">
-                        <i class="nav-icon fas fa-wallet"></i>
-                        <p>
-                            Form Data Gejala
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?=base_url('datapenyakit')?>"
-                        class="nav-link <?=$aktif==='datapenyakit' ? 'active' : ''  ?>">
-                        <i class="nav-icon fas fa-calendar-alt"></i>
-                        <p>
-                            Form Data Penyakit
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?=base_url('basispengetahuan')?>"
-                        class="nav-link <?=$aktif==='basispengetahuan' ? 'active' : ''  ?>">
-                        <i class="nav-icon fas fa-user-graduate"></i>
-                        <p>
-                            Form Basis Pengetahuan
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?=base_url('datapasien')?>" class="nav-link <?=$aktif==='datapasien' ? 'active' : ''  ?>">
-                        <i class="nav-icon fas fa-user-injured"></i>
-                        <p>
-                            Data Pasien
-                        </p>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
-
-        <!-- /.sidebar -->
-</aside>
+            <!-- partial -->

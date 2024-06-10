@@ -1,47 +1,83 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="en">
 
 <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?=$judul?></title>
-    <!-- Google Font: Source Sans Pro -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title><?=$judul?>in</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="<?=base_url('assets/template/')?>assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="<?=base_url('assets/template/')?>assets/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="<?=base_url('assets/template/')?>assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="<?=base_url('assets/template/')?>assets/vendors/font-awesome/css/font-awesome.min.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="<?=base_url('assets')?>/plugins/fontawesome-free/css/all.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="<?=base_url('assets')?>/dist/css/adminlte.min.css">
-    <!-- Icon -->
-    <link rel="shortcut icon" href="<?=base_url('assets/img/logo.png')?>" type="image/x-icon">
+        href="<?=base_url('assets/template/')?>assets/vendors/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet"
+        href="<?=base_url('assets/template/')?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <link rel="stylesheet" href="<?=base_url('assets/css/')?>style.css">
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="<?=base_url('assets/template/')?>assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="<?=base_url('assets/img/')?>logo.png" />
 </head>
 
-<body class="hold-transition sidebar-mini">
-    <div class="wrapper">
-        <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="<?=base_url('assets/')?>dist/img/logo.jpg" alt="AdminLTELogo"
-                height="60">
+<body>
+    <div class="container-scroller">
+        <div class="row p-0 m-0 proBanner" id="proBanner">
+            <div class="col-md-12 p-0 m-0">
+                <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
+                    <div class="ps-lg-3">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <p class="mb-0 font-weight-medium me-3 buy-now-text">Free 24/7 customer support, updates,
+                                and more with this template!</p>
+                            <a href="https://www.bootstrapdash.com/product/purple-bootstrap-admin-template/"
+                                target="_blank" class="btn me-2 buy-now-btn border-0">Buy Now</a>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <a href="https://www.bootstrapdash.com/product/purple-bootstrap-admin-template/"><i
+                                class="mdi mdi-home me-3 text-white"></i></a>
+                        <button id="bannerClose" class="btn border-0 p-0">
+                            <i class="mdi mdi-close text-white mr-0"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start p-2">
 
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                </li>
-            </ul>
-
-            <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                        <i class="fas fa-user-tie" style="margin-right:10px"></i>
-                        <span><?=$this->session->userdata('role')?></span>
-                    </a>
-                </li>
-            </ul>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-stretch">
+                <ul class="navbar-nav navbar-nav-left">
+                    <li class="nav-item nav-profile dropdown">
+                        <div class="nav-profile-text">
+                            <p class="mb-1 text-black">Welcom Back : <b>Username</b></p>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav navbar-nav-right">
+                    <li class="nav-item nav-settings d-none d-lg-block">
+                        <span>
+                            10/06/2024
+                        </span>
+                    </li>
+                    <li class="nav-item nav-logout d-none d-lg-block">
+                        <a class="nav-link" href="#">
+                            <i class="mdi mdi-refresh"></i>
+                        </a>
+                    </li>
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+            </div>
         </nav>

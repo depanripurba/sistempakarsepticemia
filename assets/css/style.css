@@ -91,3 +91,16 @@
 		background: #3b51e0;
 		color:white;
 	}
+
+	th{
+		padding:10px;
+	}
+	thead{
+		border-bottom:1px solid #ddd!important;
+	}
+	tr{
+		border-bottom:1px solid #ddd!important;
+	}
+	td{
+		padding: 10px;
+	}

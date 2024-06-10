@@ -31,10 +31,10 @@ class Master extends CI_Controller
 		$this->db->from('tbl_pasien');
 		$data['pasien'] = $this->db->count_all_results();
 
-		// $this->load->view('template/header',$data);
-		// $this->load->view('template/sidebar', $data);
+		$this->load->view('template/header',$data);
+		$this->load->view('template/sidebar', $data);
 		$this->load->view('admin/dashboard',$data);
-		// $this->load->view('template/footer');
+		$this->load->view('template/footer');
 		// }
 	}
 
@@ -125,6 +125,11 @@ class Master extends CI_Controller
 		$insertGejala = $this->Gejala_model->insertGejala($data_to_insert);
 
 		if($insertGejala===null){
+			$this->session->set_flashdata('message', '
+			<div class="alert alert-success" role="alert">
+				Anda Berhasil Menambah Data Gejala
+			</div>
+			');
 			redirect('/datagejala');
 		}else{
 			redirect('/tambahdatagejala');
@@ -140,12 +145,21 @@ class Master extends CI_Controller
 		$update = $this->db->update('tbl_gejala', $data_to_update);
 
 		if($update){
+			$this->session->set_flashdata('message', '
+			<div class="alert alert-info" role="alert">
+				Anda Berhasil Merubah Data Gejala
+			</div>
+			');
 			redirect('/datagejala');
 		}
 	}
 
 	public function deleteGejala($id){
 		$this->Gejala_model->deleteGejala($id);
+		$this->session->set_flashdata('message', '
+		<div class="alert alert-danger" role="alert">
+		Data Gejala Berhasil Di Hapus
+		</div>');
 		redirect('/datagejala');
 	}
 
@@ -154,8 +168,8 @@ class Master extends CI_Controller
 		$data['kode'] = $this->Penyakit_model->getcode();
 		$data['aktif'] = 'datapenyakit';
 		$data['judul'] = 'Form Tambah Data Penyakit';
-		// $this->load->view('template/header',$data);
-		// $this->load->view('template/sidebar', $data);
+		$this->load->view('template/header',$data);
+		$this->load->view('template/sidebar', $data);
 		$this->load->view('admin/formtambahdatapenyakit');
 		$this->load->view('template/footer');
 	}
@@ -167,7 +181,11 @@ class Master extends CI_Controller
 		$solusi = $_POST['solusi'];
 		$tambahpenyakitbaru = $this->Penyakit_model->insertData($kodepenyakit, $namapenyakit, $solusi);
 		if ($tambahpenyakitbaru) {
-			$this->session->set_flashdata('berhasil', 'Data Penyakit '.$_POST['kode_penyakit'].' berhasil ditambahkan ke dalam database');
+			$this->session->set_flashdata('message', '
+			<div class="alert alert-success" role="alert">
+				Anda Berhasil Menambah Data Penyakit ke dalam database
+			</div>
+			');
 			redirect(base_url('datapenyakit'));
 		}
 	}
@@ -187,7 +205,11 @@ class Master extends CI_Controller
 	{
 		$cek = $this->Penyakit_model->updatedata();
 		if ($cek) {
-			$this->session->set_flashdata('berhasil', 'Data Penyakit '.$_POST['kode_penyakit'].' berhasil di update');
+			$this->session->set_flashdata('message', '
+			<div class="alert alert-info" role="alert">
+				Anda Berhasil Merubah Data Penyakit
+			</div>
+			');
 			redirect(base_url('datapenyakit'));
 		}
 	}
@@ -196,7 +218,11 @@ class Master extends CI_Controller
 	{
 		$cek = $this->Penyakit_model->hapusdata($kodepenyakit);
 		if ($cek) {
-			$this->session->set_flashdata('deleted', 'berhasil dihapus');
+			$this->session->set_flashdata('message', '
+			<div class="alert alert-danger" role="alert">
+				Anda Berhasil Menghapus Data Penyakit
+			</div>
+			');
 			redirect(base_url('datapenyakit'));
 		}
 	}

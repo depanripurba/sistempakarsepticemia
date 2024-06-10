@@ -1,34 +1,29 @@
-<div class="content-wrapper">
-    <!-- batas -->
-    <section class="content">
-        <div class="container-fluid">
-
-            <div class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0">Data Gejala</h1>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
-            </div>
-
-            <div class="content">
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">
+                <span class="page-title-icon bg-gradient-success text-white me-2">
+                    <i class="mdi mdi-medical-bag"></i>
+                </span> List Data Gejala
+            </h3>
+        </div>
+        <div class="row">
+            <div class="col-12">
                 <div class="card">
-                    <div class="card-header">
-                        <div class="d-flex justify-content-between">
-                            <h3 class="card-title"></h3>
-                            <a class="btn btn-success" href="<?= base_url('tambahdatagejala') ?>">Tambah Data Gejala Baru</a>
-                        </div>
+                    <div class="card-header" align="right">
+                        <a class="btn btn-success" href="<?= base_url('tambahdatagejala') ?>">
+                            <i class="mdi mdi-plus"></i>
+                            <span>Tambah Data Gejala Baru</span>
+                        </a>
                     </div>
-                    <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="example2" class="table table-bordered table-hover">
+                        <?=$this->session->flashdata('message');?>
+                        <table class="table-responsive">
                             <thead>
                                 <tr>
-                                    <th>Kode Gejala</th>
-                                    <th>Nama Gejala</th>
-                                    <th>Action</th>
+                                    <th style="width:100px">Kode Gejala</th>
+                                    <th style="width:900px">Nama Gejala</th>
+                                    <th style="width:110px">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -37,23 +32,35 @@
                                     <td><?=$item['kode_gejala']?></td>
                                     <td><?=$item['nama_gejala']?></td>
                                     <td>
-                                        <a class="btn btn-success"
-                                            href="<?=site_url('Master/ubahdatagejala/'.$item['kode_gejala'])?>">Edit</a>
-                                        <a class="btn btn-danger" onclick="alert('Yakin Ingin Menghapus Data ini?')"
-                                            href="<?=site_url('Master/deleteGejala/'.$item['kode_gejala'])?>">Delete</a>
+                                        <a href="<?=site_url('Master/ubahdatagejala/'.$item['kode_gejala'])?>">
+                                            <button type="button" class="btn btn-inverse-info btn-icon">
+                                                <i class="mdi mdi-pen"></i>
+                                            </button>
+                                        </a>
+                                        <a href="<?=site_url('Master/deleteGejala/'.$item['kode_gejala'])?>">
+                                            <button type="button" class="btn btn-inverse-danger btn-icon">
+                                                <i class="mdi mdi-delete"></i>
+                                            </button>
+                                        </a>
                                     </td>
-
                                 </tr>
-                                <?php endforeach; ?>
-                            </tbody>
+                                <?php endforeach ;?>
                             </tbody>
                         </table>
                     </div>
-
-                    <!-- /.card-body -->
                 </div>
-
             </div>
-    </section>
+        </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:partials/_footer.html -->
+    <footer class="footer">
+        <div class="d-sm
+-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright ©
+                2024</span>
+        </div>
+    </footer>
+    <!-- partial -->
 </div>
-<!-- /.content-wrapper -->
+<!-- main-panel ends -->

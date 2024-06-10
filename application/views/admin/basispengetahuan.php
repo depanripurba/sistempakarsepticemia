@@ -1,67 +1,75 @@
-
-<div class="content-wrapper">
-  <!-- batas -->
-  <section class="content">
-    <div class="container-fluid">
-
-  <div class="content-header">
-      <div class="container-fluid">
-          <div class="row mb-2">
-              <div class="col-sm-6">
-                  <h1 class="m-0">Data Basis Pengetahuan</h1>
-          </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-  </div>
-
-  <div class="content">
-    <div class="card">
-      <div class="card-header">
-      <div class="d-flex justify-content-between">
-        <h3 class="card-title"></h3>
-        <a class="btn btn-success mx-3" href="<?= base_url('tambahbasis') ?>">Tambah Data Basis Pengetahuan Baru</a>
-      </div>
-      </div>
-      <!-- /.card-header -->
-      <div class="card-body">
-        <table id="example2" class="table table-bordered table-hover">
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Kode Penyakit</th>
-              <th>Nama Penyakit</th>
-              <th>Kode Gejala</th>
-              <th>Nama Gejala</th>
-              <th>Nilai Probabilitas</th>
-              <th>Aksi</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php $nomor = 1 ?>
-            <?php foreach ($basis as $b) : ?>
-              <tr>
-                <td><?= $nomor ?></td>
-                <td><?= $b->kode_penyakit ?></td>
-                <td><?= $b->nama_penyakit ?></td>
-                <td><?= $b->kode_gejala ?></td>
-                <td><?= $b->nama_gejala ?></td>
-                <td><?= $b->nilai ?></td>
-                <td class="text-center">
-                  <button data-url="<?= base_url('hapusbasis/' . $b->id) ?>" id="hapusdata" class="btn btn-danger">
-                    <i data-url="<?= base_url('hapusbasis/' . $b->id) ?>" data-toggle="tooltip" data-placement="top" title="Hapus" class="fas fa-trash"></i>
-                  </button>
-                  <a class="btn btn-info" href="<?= base_url('editbasis/') . $b->id ?>"><i data-toggle="tooltip" data-placement="top" title="Edit" class="fas fa-edit"></i></a>
-                </td>
-              </tr>
-              <?php $nomor++ ?>
-            <?php endforeach ?>
-          </tbody>
-        </table>
-      </div>
-      <!-- /.card-body -->
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">
+                <span class="page-title-icon bg-gradient-success text-white me-2">
+                    <i class="mdi mdi-medical-bag"></i>
+                </span> List Basis Pengetahuan
+            </h3>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header" align="right">
+                        <a class="btn btn-success" href="<?= base_url('tambahbasis') ?>">
+                            <i class="mdi mdi-plus"></i>
+                            <span>Tambah Data Basis Pengetahuan</span>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <?=$this->session->flashdata('message');?>
+                        <table class="table-responsive">
+                            <thead>
+                                <tr>
+                                    <th style="width: 40px">No.</th>
+                                    <th style="width: 120px">Kode Penyakit</th>
+                                    <th style="width: 150px">Nama Penyakit</th>
+                                    <th style="width: 110px">Kode Gejala</th>
+                                    <th style="width: 445px">Nama Gejala</th>
+                                    <th style="width: 150px">Nilai Probabilitas</th>
+                                    <th style="width: 110px">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $nomor = 1 ?>
+                                <?php foreach ($basis as $b) : ?>
+                                <tr>
+                                    <td><?= $nomor++ ?></td>
+                                    <td><?= $b->kode_penyakit ?></td>
+                                    <td><?= $b->nama_penyakit ?></td>
+                                    <td><?= $b->kode_gejala ?></td>
+                                    <td><?= $b->nama_gejala ?></td>
+                                    <td><?= $b->nilai ?></td>
+                                    <td>
+                                        <a href="<?= base_url('editbasis/') . $b->id ?>">
+                                            <button type="button" class="btn btn-inverse-info btn-icon">
+                                                <i class="mdi mdi-pen"></i>
+                                            </button>
+                                        </a>
+                                        <a href="<?= base_url('hapusbasis/' . $b->id) ?>">
+                                            <button type="button" class="btn btn-inverse-danger btn-icon">
+                                                <i class="mdi mdi-delete"></i>
+                                            </button>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <?php endforeach ;?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-
-    </div>
-  </section>
+    <!-- content-wrapper ends -->
+    <!-- partial:partials/_footer.html -->
+    <footer class="footer">
+        <div class="d-sm
+-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright ©
+                2024</sp an>
+        </div>
+    </footer>
+    <!-- partial -->
 </div>
-<!-- /.content-wrapper -->
+<!-- main-panel ends -->
