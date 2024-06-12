@@ -3,7 +3,7 @@
         <div class="page-header">
             <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-success text-white me-2">
-                    <i class="mdi mdi-medical-bag"></i>
+                    <i class="fa fa-stethoscope menu-icon"></i>
                 </span> List Data Penyakit Foot And Mouth Disease Domba
             </h3>
         </div>
@@ -25,7 +25,7 @@
                                     <th style="width:125px">Kode Penyakit</th>
                                     <th style="width:150px">Nama Penyakit</th>
                                     <th style="width:680px">Solusi</th>
-                                    <th style="width:110px;">Aksi</th>
+                                    <th style="width:110px;text-align:center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,7 +49,7 @@
                                                         ?>
                                         </ul>
                                     </td>
-                                    <td>
+                                    <td style="text-align:center">
                                         <a href="<?= base_url('editpenyakit/') ?><?= $data->kode_penyakit ?>">
                                             <button type="button" class="btn btn-inverse-info btn-icon">
                                                 <i class="mdi mdi-pen"></i>

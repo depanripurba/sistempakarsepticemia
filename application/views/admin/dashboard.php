@@ -13,24 +13,23 @@
                     <div class="card-body">
                         <img src="<?=base_url('assets/template/')?>assets/images/dashboard/circle.svg"
                             class="card-img-absolute" alt="circle-image" />
-                        <h4 class="font-weight-normal mb-3">Total Data Gejala <i
-                                class="mdi mdi-chart-line mdi-24px float-end"></i>
+                        <h4 class="font-weight-normal mb-3">Total Data Gejala
+                            <i class="mdi mdi-medical-bag float-end"></i>
                         </h4>
-                        <h2 class="mb-5">10</h2>
+                        <h2 class="mb-5"><?=$gejala?></h2>
                         <h6 class="card-text">Data Gejala</h6>
                     </div>
                 </div>
             </div>
-
             <div class="col-md-6 stretch-card grid-margin">
                 <div class="card bg-gradient-danger card-img-holder text-white">
                     <div class="card-body">
                         <img src="<?=base_url('assets/template/')?>assets/images/dashboard/circle.svg"
                             class="card-img-absolute" alt="circle-image" />
-                        <h4 class="font-weight-normal mb-3">Total Data Penyakit <i
-                                class="mdi mdi-diamond mdi-24px float-end"></i>
+                        <h4 class="font-weight-normal mb-3">Total Data Penyakit
+                            <i class="fa fa-stethoscope float-end"></i>
                         </h4>
-                        <h2 class="mb-5">105</h2>
+                        <h2 class="mb-5"><?=$penyakit?></h2>
                         <h6 class="card-text">Data Penyakit</h6>
                     </div>
                 </div>
@@ -40,11 +39,11 @@
                     <div class="card-body">
                         <img src="<?=base_url('assets/template/')?>assets/images/dashboard/circle.svg"
                             class="card-img-absolute" alt="circle-image" />
-                        <h4 class="font-weight-normal mb-3">Total Data Basis Data <i
-                                class="mdi mdi-bookmark-outline mdi-24px float-end"></i>
+                        <h4 class="font-weight-normal mb-3">Total Basis Data Pengetahuan<i
+                                class="fa fa-cube float-end"></i>
                         </h4>
-                        <h2 class="mb-5">45</h2>
-                        <h6 class="card-text">Data Penyakit</h6>
+                        <h2 class="mb-5"><?=$basispengetahuan?></h2>
+                        <h6 class="card-text">Basis Data Pengetahuan</h6>
                     </div>
                 </div>
             </div>
@@ -53,10 +52,10 @@
                     <div class="card-body">
                         <img src="<?=base_url('assets/template/')?>assets/images/dashboard/circle.svg"
                             class="card-img-absolute" alt="circle-image" />
-                        <h4 class="font-weight-normal mb-3">Total Data Riwayat Konsultasi <i
-                                class="mdi mdi-diamond mdi-24px float-end"></i>
+                        <h4 class="font-weight-normal mb-3">Total Data Riwayat Konsultasi
+                            <i class="fa fa-users float-end"></i>
                         </h4>
-                        <h2 class="mb-5">95</h2>
+                        <h2 class="mb-5"><?=$pasien?></h2>
                         <h6 class="card-text">Data Konsultasi</h6>
                     </div>
                 </div>

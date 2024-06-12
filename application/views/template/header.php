@@ -59,14 +59,17 @@
                 <ul class="navbar-nav navbar-nav-left">
                     <li class="nav-item nav-profile dropdown">
                         <div class="nav-profile-text">
-                            <p class="mb-1 text-black">Welcom Back : <b>Username</b></p>
+                            <p class="mb-1 text-black">Welcom Back : <b><?=$this->session->userdata('name')?></b></p>
                         </div>
                     </li>
                 </ul>
                 <ul class="navbar-nav navbar-nav-right">
                     <li class="nav-item nav-settings d-none d-lg-block">
                         <span>
-                            10/06/2024
+                            <?php
+								$date = date('d / m / Y');
+								echo $date;
+							?>
                         </span>
                     </li>
                     <li class="nav-item nav-logout d-none d-lg-block">

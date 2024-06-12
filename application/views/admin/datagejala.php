@@ -21,9 +21,9 @@
                         <table class="table-responsive">
                             <thead>
                                 <tr>
-                                    <th style="width:100px">Kode Gejala</th>
+                                    <th style="width:120px">Kode Gejala</th>
                                     <th style="width:900px">Nama Gejala</th>
-                                    <th style="width:110px">Action</th>
+                                    <th style="width:110px;text-align:center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -31,7 +31,7 @@
                                 <tr>
                                     <td><?=$item['kode_gejala']?></td>
                                     <td><?=$item['nama_gejala']?></td>
-                                    <td>
+                                    <td style="text-align:center">
                                         <a href="<?=site_url('Master/ubahdatagejala/'.$item['kode_gejala'])?>">
                                             <button type="button" class="btn btn-inverse-info btn-icon">
                                                 <i class="mdi mdi-pen"></i>

@@ -57,7 +57,8 @@ class Auth extends CI_Controller
 				// Jika Password Benar
 				$data = [
 					'username' => $login['username'],
-					'role' => $login['role']
+					'role' => $login['role'],
+					'name' => $login['name']
 				];
 				$this->session->set_userdata($data);
 			redirect('master/index');
@@ -103,6 +104,7 @@ class Auth extends CI_Controller
 
 	public function logout()
 	{
+		$this->session->unset_userdata('name');
 		$this->session->unset_userdata('username');
 		$this->session->unset_userdata('role');
 
@@ -110,7 +112,7 @@ class Auth extends CI_Controller
 		$this->session->set_flashdata('message', '
 		<div class="alert alert-danger" role="alert">
 		Anda Telah Log out, sesi berakhir
-	  </div>
+		</div>
 		');
 		redirect('auth');
 	}

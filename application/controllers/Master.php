@@ -8,7 +8,7 @@ class Master extends CI_Controller
 	{
 		parent::__construct();
 		// Jika tidak ada user yang berhasil login, kembalikan ke halaman login
-		if (!$this->session->userdata('username') || $this->session->userdata('role')!=='Admin') {
+		if (!$this->session->userdata('username') || $this->session->userdata('role')!=='Admin'){
 			redirect('auth');
 		}
 		// Load Model
@@ -30,6 +30,8 @@ class Master extends CI_Controller
 		$data['penyakit'] = $this->db->count_all_results();
 		$this->db->from('tbl_pasien');
 		$data['pasien'] = $this->db->count_all_results();
+		$this->db->from('tbl_basispengetahuan');
+		$data['basispengetahuan'] = $this->db->count_all_results();
 
 		$this->load->view('template/header',$data);
 		$this->load->view('template/sidebar', $data);
@@ -285,5 +287,14 @@ class Master extends CI_Controller
 		}
 	}
 
+	public function profile(){
+		$data['aktif'] = 'home';
+		$data['judul'] = 'SP Theorema Bayes Endokrin - Dashboard';
 
+		$this->load->view('template/header',$data);
+		$this->load->view('template/sidebar', $data);
+		$this->load->view('admin/profile',$data);
+		$this->load->view('template/footer');
+		// }
+	}
 }

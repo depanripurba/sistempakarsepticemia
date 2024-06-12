@@ -3,7 +3,7 @@
         <div class="page-header">
             <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-success text-white me-2">
-                    <i class="mdi mdi-medical-bag"></i>
+                    <i class="fa fa-cube"></i>
                 </span> List Basis Pengetahuan
             </h3>
         </div>
@@ -27,7 +27,7 @@
                                     <th style="width: 110px">Kode Gejala</th>
                                     <th style="width: 445px">Nama Gejala</th>
                                     <th style="width: 150px">Nilai Probabilitas</th>
-                                    <th style="width: 110px">Action</th>
+                                    <th style="width: 110px;text-align:center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,7 +40,7 @@
                                     <td><?= $b->kode_gejala ?></td>
                                     <td><?= $b->nama_gejala ?></td>
                                     <td><?= $b->nilai ?></td>
-                                    <td>
+                                    <td style="text-align:center">
                                         <a href="<?= base_url('editbasis/') . $b->id ?>">
                                             <button type="button" class="btn btn-inverse-info btn-icon">
                                                 <i class="mdi mdi-pen"></i>

@@ -1,6 +1,6 @@
 	*{
 		margin: 0px;
-		padding: 0px
+		padding: 0px;
 	}
 	/* Font-Style */
 	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
@@ -103,4 +103,10 @@
 	}
 	td{
 		padding: 10px;
+	}
+	td a{
+		text-decoration: none!important;
+	}
+	.table-responsive{
+		width: 100%;
 	}

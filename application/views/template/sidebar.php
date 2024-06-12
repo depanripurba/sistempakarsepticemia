@@ -38,7 +38,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?=base_url('master/basispengetahuan')?>">
                             <span class="menu-title">Basis Pengetahuan</span>
-                            <i class="mdi mdi-chart-bar menu-icon"></i>
+                            <i class="fa fa-cube menu-icon"></i>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -69,10 +69,11 @@
                         <div class="collapse" id="auth">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="pages/samples/blank-page.html"> Profil Admin </a>
+                                    <a class="nav-link" href="<?=base_url('master/profile')?>"> Profil Admin </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="pages/samples/login.html"> Logout </a>
+                                    <a class="nav-link" href="<?=base_url('auth/logout')?>"
+                                        onclick="return confirm('Apakah Anda Yakin Ingin Keluar?')"> Logout </a>
                                 </li>
                             </ul>
                         </div>
