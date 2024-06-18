@@ -21,10 +21,9 @@
 		height: 100%;
 		opacity: 0.8;
 		overflow: hidden;
-		background-image: linear-gradient(195deg, #42424a 0%, #205b6f 100%);
+		background-image: linear-gradient(195deg, #42424a 0%, #39beb7 100%);
 	}
 	.header{
-		margin-top: 30px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -41,14 +40,13 @@
 		text-decoration: none;
 		font-size: 18px;
 		font-weight: 600;
-		color: #3b51e0;
+		color: #fe8025;
 		border-radius: 10px;
 		padding: 10px;
 		transition: all .2s;
 	}
 	.header a:hover{
-		background-color: #ffffff42;
-		background: #3b51e0;
+		background: #fe8025;
 		color: white;
 	}
 	.logo{
@@ -63,32 +61,35 @@
 	}
 	.center{
 		display: flex;
-		flex-direction: column;
-		justify-content: center;
+		flex-direction: row;
+		justify-content: space-around;
 		align-items: center;
 		width: 100%;
 		height: 100%;
 	}
 	.center-text{
 		width: 800px;
-		text-align: center;
-		font-size: 34px;
+		font-size: 54px;
+		line-height: 1.3em;
 		font-weight: 600;
 		color: white;
 	}
 	.button-diagnosa{
+		display: flex;
+		justify-content: center;
+		width: 200px;
 		margin-top: 30px;
 		text-decoration: none;
-		background: #FFFFFF90;
-		color:#3b51e0;
-		border: 2px solid #3b51e0;
+		background: #fe8025;
+		color:#fff;
+		border: 2px solid #62a098;
 		padding: 15px;
-		border-radius: 10px;
+		border-radius: 30px;
 		font-weight: 600;
 		transition: all .2s;
 	}
 	.button-diagnosa:hover{		
-		background: #3b51e0;
+		background: #fe8025;
 		color:white;
 	}
 
@@ -109,4 +110,19 @@
 	}
 	.table-responsive{
 		width: 100%;
+	}
+
+	.divide-text{
+		margin-top: 15px;
+		background: #fe8025;
+		width: 605px;
+		height: 5px;
+		border-radius: 30px;
+	}
+
+	.font-text{
+		margin-top: 20px;
+		font-size: 24px;
+		line-height: 1.3em;
+		color: white;
 	}

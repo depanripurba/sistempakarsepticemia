@@ -37,7 +37,6 @@
                                     <td><?= $data->nama_penyakit ?></td>
 
                                     <td>
-
                                         <ul style="padding: 0 10px;margin:0">
                                             <?php
                                                         $solusi = $data->solusi;

@@ -22,7 +22,7 @@ class Master extends CI_Controller
 	public function index()
 	{
 		$data['aktif'] = 'home';
-		$data['judul'] = 'SP Theorema Bayes Endokrin - Dashboard';
+		$data['judul'] = 'SP Theorema Bayes - Dashboard';
 		// NumRows
 		$this->db->from('tbl_gejala');
 		$data['gejala'] = $this->db->count_all_results();

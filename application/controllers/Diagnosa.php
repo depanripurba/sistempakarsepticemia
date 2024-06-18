@@ -130,10 +130,10 @@ class Diagnosa extends CI_Controller
         $propertiview['aktif'] = 'Diagnosa Pasien';
         $propertiview['hasil'] = $hasildiagnosakirim;
         $propertiview['user'] = $this->session->userdata();
-        $this->load->view('user/template/header', $propertiview);
-        $this->load->view('user/template/sidebar', $propertiview);
+        $this->load->view('template/header', $propertiview);
+        $this->load->view('template/sidebar-user', $propertiview);
         $this->load->view('user/hasildiagnosa', $propertiview);
-        $this->load->view('user/template/footer', $propertiview);
+        $this->load->view('template/footer', $propertiview);
     }
 
     private function forwadchaining($newdata)

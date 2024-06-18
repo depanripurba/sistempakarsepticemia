@@ -13,7 +13,7 @@ class User extends CI_Controller
 	}
 
 	public function index(){
-		$data['judul']='SISTEM PAKAR DIAGNOSA ENDOKRIN - HOME';
+		$data['judul']='SISTEM PAKAR - HOME';
 		$this->load->view('user/home',$data);
 	}
 
@@ -27,10 +27,10 @@ class User extends CI_Controller
 		$data['judul']='SISTEM PAKAR DIAGNOSA ENDOKRIN - DASHBOARD USER';
 		$data['aktif']='Dashboard Pasien';
 		$data['user']=$this->session->userdata();
-		$this->load->view('user/template/header',$data);
-		$this->load->view('user/template/sidebar',$data);
+		$this->load->view('template/header',$data);
+		$this->load->view('template/sidebar-user',$data);
 		$this->load->view('user/dashboard',$data);
-		$this->load->view('user/template/footer',$data);
+		$this->load->view('template/footer',$data);
 	}
 
 	public function diagnosa(){
@@ -43,10 +43,10 @@ class User extends CI_Controller
 		$data['aktif']='Diagnosa Pasien';
 		$data['user']=$this->session->userdata();
 		$data['gejala'] = $this->Gejala_model->getAllGejala();
-		$this->load->view('user/template/header',$data);
-		$this->load->view('user/template/sidebar',$data);
+		$this->load->view('template/header',$data);
+		$this->load->view('template/sidebar-user',$data);
 		$this->load->view('user/diagnosa',$data);
-		$this->load->view('user/template/footer',$data);
+		$this->load->view('template/footer',$data);
 	}
 
 	public function login(){
@@ -169,6 +169,5 @@ class User extends CI_Controller
 	public function cetakhasil()
 	{
 		$this->load->view('user/cetakhasil');
-		
 	}
 }

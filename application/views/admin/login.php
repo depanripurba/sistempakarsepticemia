@@ -28,7 +28,9 @@
             <div class="content-wrapper d-flex align-items-center auth">
                 <div class="row flex-grow">
                     <div class="col-lg-6 d-flex align-items-center justify-content-center">
-                        <img src="<?=base_url('assets/img/logo.png')?>" style="max-width:250px" alt="">
+                        <a href="<?=base_url()?>">
+                            <img src="<?=base_url('assets/img/logo.png')?>" style="max-width:250px" alt="">
+                        </a>
                     </div>
                     <div class="col-lg-6 mx-auto">
                         <div class="auth-form-light text-left p-5">
@@ -39,10 +41,12 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" placeholder="Username"
                                         id="username" name="username">
+                                    <span class="text-danger"><?= form_error('username') ?></span>
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control form-control-lg" placeholder="Password"
                                         id="password" name="password">
+                                    <span class="text-danger"><?= form_error('password') ?></span>
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <button type="submit" class="btn btn-success btn-fw">Login</button>

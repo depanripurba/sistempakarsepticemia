@@ -37,15 +37,6 @@ class Auth extends CI_Controller
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 
-		if($username==='' || $password===''){
-			$this->session->set_flashdata('message', '
-			<div class="alert alert-danger" role="alert">
-				Anda Belum Mengisi Form
-			</div>
-			');
-			redirect('auth');
-		}
-
 		// Query User
 		$login = $this->db->get_where('tbl_login', ['username' => $username])->row_array();
 
@@ -92,7 +83,6 @@ class Auth extends CI_Controller
 		if ($this->form_validation->run() == false) {
 			$this->load->view('admin/login');
 		} else {
-
 			$data = [
 				'username' => $this->input->post('username'),
 				'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),

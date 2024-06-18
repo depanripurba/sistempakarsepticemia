@@ -15,17 +15,14 @@
     <link rel="stylesheet" href="<?=base_url('assets')?>/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?=base_url('assets')?>/dist/css/adminlte.min.css">
-	<!-- Icon -->
-	<link rel="shortcut icon" href="<?=base_url('assets/img/logo.png')?>" type="image/x-icon">
+    <!-- Icon -->
+    <link rel="shortcut icon" href="<?=base_url('assets/img/logo.png')?>" type="image/x-icon">
 </head>
 
 <body class="hold-transition login-page">
     <div class="login-box">
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
-            <div class="card-header text-center">
-                <a href="<?=base_url('')?>"><img src="<?=base_url('assets/dist/img/logo.jpg')?>" width="200" alt=""></a>
-            </div>
             <div class="card-body">
                 <form action="<?=base_url("user/login_act")?>" method="POST">
                     <?=$this->session->flashdata('message');?>
@@ -51,12 +48,13 @@
                         </div>
                         <!-- /.col -->
                     </div>
-					<div class="row mt-2">
-						<div class="col-12">
-							<span>Belum Punya Akun?</span>
-							<a href="<?=base_url('user/register')?>" class="text-success"><span>Registrasi Di Sini</span></a>
-						</div>
-					</div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <span>Belum Punya Akun?</span>
+                            <a href="<?=base_url('user/register')?>" class="text-success"><span>Registrasi Di
+                                    Sini</span></a>
+                        </div>
+                    </div>
                 </form>
             </div>
             <!-- /.card-body -->
