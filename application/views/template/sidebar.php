@@ -54,12 +54,6 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">
-                            <span class="menu-title">Data Riwayat Diagnosa</span>
-                            <i class="mdi mdi-table-large menu-icon"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false"
                             aria-controls="auth">
                             <span class="menu-title">Administrator</span>

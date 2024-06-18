@@ -74,7 +74,7 @@ class Penyakit_model extends CI_Model
 	}
 	public function getcode()
 	{
-		return $this->depalgoritma('P00');
+		return $this->depalgoritma('P0');
 	}
 	private function depalgoritma($partone)
 	{
