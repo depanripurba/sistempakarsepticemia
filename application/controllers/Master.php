@@ -123,9 +123,7 @@ class Master extends CI_Controller
 			'kode_gejala' => $_POST['kode_gejala'],
 			'nama_gejala' => $_POST['nama_gejala'],
 		);
-
 		$insertGejala = $this->Gejala_model->insertGejala($data_to_insert);
-
 		if($insertGejala===null){
 			$this->session->set_flashdata('message', '
 			<div class="alert alert-success" role="alert">

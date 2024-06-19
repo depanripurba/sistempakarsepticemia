@@ -48,8 +48,55 @@ class Gejala_model extends CI_Model
 	}
 	public function getcode()
 	{
-		return $this->depalgoritma('G0');
+		return $this->generateGejalaCode('G0');
 	}
+
+	private function generateGejalaCode($prefix)
+	{
+		// Mengambil data gejala dari database
+		$gejalaData = $this->db->get('tbl_gejala')->result();
+
+		// Menginisialisasi variabel
+		$totalGejala = count($gejalaData);
+		$biggestCode = 0;
+		$missingCode = 0;
+
+		// Menemukan kode gejala terbesar
+		if ($totalGejala > 0) {
+			$lastGejala = $gejalaData[$totalGejala - 1]->kode_gejala;
+			$biggestCode = (int)substr($lastGejala, 1);
+		}
+
+		// Mencari kode yang hilang dalam urutan
+		for ($i = 1; $i <= $biggestCode; $i++) {
+			$found = false;
+			foreach ($gejalaData as $gejala) {
+				$currentCode = (int)substr($gejala->kode_gejala, 1);
+				if ($currentCode === $i) {
+					$found = true;
+					break;
+				}
+			}
+			if (!$found) {
+				$missingCode = $i;
+				break;
+			}
+		}
+
+		// Menentukan bagian akhir dari kode
+		$partEnd = $missingCode > 0 ? $missingCode : $biggestCode + 1;
+
+		// Menyusun kode gejala lengkap
+		$generatedCode = $prefix . $partEnd;
+
+		// Mengatur panjang kode
+		if (strlen($generatedCode) > 3) {
+			$generatedCode = 'G' . $partEnd;
+		}
+
+		return $generatedCode;
+	}
+
 	private function depalgoritma($partone)
 	{
 		$datagejala = $this->db->get('tbl_gejala');

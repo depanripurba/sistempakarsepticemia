@@ -34,7 +34,7 @@ body {
                     menggunakan
                     Teorema
                     Bayes</p>
-                <a class="button-diagnosa" href="<?=base_url('user/login')?>">
+                <a class="button-diagnosa" href="<?=base_url('user/diagnosa')?>">
                     <span>MULAI MENDIAGNOSA</span>
                 </a>
             </div>

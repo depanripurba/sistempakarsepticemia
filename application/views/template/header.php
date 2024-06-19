@@ -27,6 +27,14 @@
     <link rel="shortcut icon" href="<?=base_url('assets/img/')?>logo.png" />
 </head>
 
+<?php if($this->session->userdata('role')!=='Admin'):?>
+<style>
+.main-panel {
+    width: 100% !important;
+}
+</style>
+<?php endif;?>
+
 <body>
     <div class="container-scroller">
         <div class="row p-0 m-0 proBanner" id="proBanner">
@@ -51,6 +59,7 @@
             </div>
         </div>
         <!-- partial:partials/_navbar.html -->
+        <?php if($this->session->userdata('role')==='Admin'): ?>
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start p-2">
 
@@ -84,3 +93,4 @@
                 </button>
             </div>
         </nav>
+        <?php endif;?>

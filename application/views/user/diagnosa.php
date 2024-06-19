@@ -3,7 +3,7 @@
         <div class="page-header">
             <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-success text-white me-2">
-                    <i class="fa fa-stethoscope menu-icon"></i>
+                    <i class="mdi mdi-home menu-icon"></i>
                 </span> Diagnosa Penyakit Foot And Mouth Disease Domba
             </h3>
         </div>
@@ -12,7 +12,7 @@
                 <form action="<?=base_url('diagnosa/prosesdiagnosa')?>" method="post">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Diagnosa Penyakit</h3>
+                            <p class="card-title mt-3">Form Diagnosa Penyakit</p>
                         </div>
                         <div class="card-body">
                             <div class="col-md-6 stretch-card">
@@ -27,13 +27,15 @@
                                     <div class="form-group row">
                                         <label for="telepon" class="col-sm-3 col-form-label">No. Telp</label>
                                         <div class="col-sm-9">
-                                            <input type="number" class="form-control" id="telepon" name="telepon">
+                                            <input type="number" class="form-control" id="telepon" name="telepon"
+                                                placeholder="+62">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="alamat" class="col-sm-3 col-form-label">Alamat</label>
                                         <div class="col-sm-9">
-                                            <textarea class="form-control" name="alamat" id="alamat"></textarea>
+                                            <textarea class="form-control" name="alamat" id="alamat"
+                                                placeholder="Alamat Lengkap"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +67,11 @@
                             </table>
                         </div>
                         <div class="card-footer clearfix">
-                            <button class="btn btn-info">Diagnosa</button>
+                            <button class="btn btn-success">Diagnosa</button>
+                            <a href="<?=base_url()?>" class="btn btn-danger float-right" style="margin-right: 5px;">
+                                <i class="fa fa-mail-reply"></i>
+                                Kembali
+                            </a>
                         </div>
                     </div>
                 </form>
@@ -83,4 +89,6 @@
     </footer>
     <!-- partial -->
 </div>
+
+
 <!-- main-panel ends -->
