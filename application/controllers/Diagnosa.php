@@ -130,6 +130,11 @@ class Diagnosa extends CI_Controller
         $propertiview['aktif'] = 'Diagnosa Pasien';
         $propertiview['hasil'] = $hasildiagnosakirim;
         $propertiview['user'] = $this->session->userdata();
+		$propertiview['userdata'] = [
+			"nama"=>$_POST['nama'],
+			"telepon"=>$_POST['telepon'],
+			"alamat"=>$_POST['alamat'],
+		];
         $this->load->view('template/header', $propertiview);
         $this->load->view('user/hasildiagnosa', $propertiview);
         $this->load->view('template/footer', $propertiview);

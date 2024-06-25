@@ -32,6 +32,10 @@
 .main-panel {
     width: 100% !important;
 }
+
+.proBanner {
+    display: none !important;
+}
 </style>
 <?php endif;?>
 

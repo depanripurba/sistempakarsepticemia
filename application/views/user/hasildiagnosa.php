@@ -22,23 +22,20 @@
                             <!-- /.col -->
                         </div>
                         <div class="row">
-                            <?php
-								if($user['role']==="Admin"){
-									$user['fullname']='Administrator';
-									$user['alamat']='Administrator';
-								}
-							?>
                             <div class="col-md-6 stretch-card mt-5">
                                 <div class="card">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Nama Peternak</label>
-                                        <input type="text" class="form-control" value="<?=$user['fullname']?>" disabled>
+                                        <input type="text" class="form-control" value="<?=$userdata['nama']?>" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Telepon</label>
+                                        <input type="number" class="form-control" value="<?=$userdata['telepon']?>"
+                                            disabled>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Alamat</label>
-                                        <textarea class="form-control" disabled>
-                                            <?=$user['alamat']?>
-										</textarea>
+                                        <textarea class="form-control" disabled><?=$userdata['alamat']?></textarea>
                                     </div>
                                 </div>
                             </div>
