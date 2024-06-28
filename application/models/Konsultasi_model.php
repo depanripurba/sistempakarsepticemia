@@ -11,7 +11,7 @@ class Konsultasi_model extends CI_Model
 
 	public function getAllData()
 	{
-		$this->db->order_by('kode_konsultasi', 'ASC');
+		$this->db->order_by('tanggal', 'ASC');
 		$data = $this->db->get('tbl_konsultasi')->result();
 		return $data;
 	}
