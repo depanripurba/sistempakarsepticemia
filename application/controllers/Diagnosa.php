@@ -154,7 +154,7 @@ class Diagnosa extends CI_Controller
 			"tanggal"=>date('d / M / Y')
 		];
 		// var_dump($data_to_Insert);die;
-		// $insertData = $this->Konsultasi_model->insertKonsultasi($data_to_Insert);
+		$insertData = $this->Konsultasi_model->insertKonsultasi($data_to_Insert);
 
         $this->load->view('template/header_user', $propertiview);
         $this->load->view('user/hasildiagnosa', $propertiview);
