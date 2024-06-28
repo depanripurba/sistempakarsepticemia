@@ -16,6 +16,7 @@ class Master extends CI_Controller
 		$this->load->model('Gejala_model');
 		$this->load->model('Pasien_model');
 		$this->load->model('Basis_model');
+		$this->load->model('Konsultasi_model');
 	}
 
 
@@ -283,6 +284,18 @@ class Master extends CI_Controller
 			$this->session->set_flashdata('deleted', 'berhasil dihapus');
 			redirect(base_url('basispengetahuan'));
 		}
+	}
+
+	public function konsultasi()
+	{
+
+		$data['aktif'] = 'konsultasi';
+		$data['judul'] = 'Riwayat Konsultasi';
+		$data['riwayat'] = $this->Konsultasi_model->getAllData();
+		$this->load->view('template/header',$data);
+		$this->load->view('template/sidebar', $data);
+		$this->load->view('admin/datakonsultasi',$data);
+		$this->load->view('template/footer');
 	}
 
 	public function profile(){

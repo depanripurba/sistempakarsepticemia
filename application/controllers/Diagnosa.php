@@ -12,10 +12,12 @@ class Diagnosa extends CI_Controller
         $this->load->model('Gejala_model');
         $this->load->model('Pasien_model');
         $this->load->model('Basis_model');
+        $this->load->model('Konsultasi_model');
     }
 
     public function prosesdiagnosa()
     {
+		$this->session->set_userdata('hasildiagnosa','');
         if($_SESSION['hasildiagnosa']!=null){
             $this->session->unset_userdata('hasildiagnosa');
         }
@@ -131,11 +133,30 @@ class Diagnosa extends CI_Controller
         $propertiview['hasil'] = $hasildiagnosakirim;
         $propertiview['user'] = $this->session->userdata();
 		$propertiview['userdata'] = [
+			"kode_konsultasi"=>(int)$_POST['kode'],
 			"nama"=>$_POST['nama'],
 			"telepon"=>$_POST['telepon'],
 			"alamat"=>$_POST['alamat'],
 		];
-        $this->load->view('template/header', $propertiview);
+		// var_dump($propertiview['userdata'],$propertiview['hasil']);die;
+
+		$gejalaselected =  $hasildiagnosakirim['gejalacentang'];
+		// var_dump($gejalaselected);die;
+
+		// Simpan Hasil Ke Dalam Database
+		$data_to_Insert = [
+			"kode_konsultasi"=>$_POST['kode'],
+			"nama"=>$_POST['nama'],
+			"telepon"=>$_POST['telepon'],
+			"alamat"=>$_POST['alamat'],
+			"penyakit"=>$propertiview['hasil']['namapenyakit'],
+			"solusi"=>$propertiview['hasil']['solusi'],
+			"tanggal"=>date('d / M / Y')
+		];
+		// var_dump($data_to_Insert);die;
+		// $insertData = $this->Konsultasi_model->insertKonsultasi($data_to_Insert);
+
+        $this->load->view('template/header_user', $propertiview);
         $this->load->view('user/hasildiagnosa', $propertiview);
         $this->load->view('template/footer', $propertiview);
     }

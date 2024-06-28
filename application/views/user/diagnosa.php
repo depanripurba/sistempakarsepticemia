@@ -19,6 +19,7 @@
                                 <div class="card">
                                     <div class="form-group row">
                                         <label for="nama" class="col-sm-3 col-form-label">Nama Peternak</label>
+                                        <input type="hidden" id="kode" name="kode" value="<?=$kode;?>">
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="nama" name="nama"
                                                 placeholder="Nama Peternak">

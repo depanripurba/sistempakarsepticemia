@@ -1,3 +1,9 @@
+<style>
+.ctrl {
+    white-space: pre-wrap;
+    line-height: 1.5;
+}
+</style>
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
@@ -37,10 +43,41 @@
                                         <label for="exampleInputEmail1">Alamat</label>
                                         <textarea class="form-control" disabled><?=$userdata['alamat']?></textarea>
                                     </div>
+                                    <?php $rowG = count($hasil['gejalacentang']);?>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Gejala yang dipilih</label>
+                                        <textarea class="form-control ctrl" disabled rows="<?=$rowG?>" cols="30"><?php
+											foreach ($hasil['gejalacentang'] as $g):
+												echo $g->nama_gejala.'&#13;&#10;';
+											endforeach;
+										?>
+										</textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Hasil Diagnosis</label>
+                                        <textarea class="form-control ctrl" disabled rows="<?=$rowG?>" cols="30"><?php
+										 echo $hasil['namapenyakit'];
+										?>
+										</textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Solusi</label>
+                                        <textarea class="form-control ctrl" disabled rows="<?=$rowG?>" cols="30"><?php
+										echo $hasil['solusi'];
+										?>
+										</textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Nilai Probabilitas</label>
+                                        <textarea class="form-control ctrl" disabled rows="<?=$rowG?>" cols="30"><?php
+											echo $hasil['nilaipeluang']?> atau <?=$hasil['persenpeluang'] . '%'
+										?>
+										</textarea>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <table class="mt-3">
+                        <!-- <table class="mt-3">
                             <tr>
                                 <td style="width:200px">Nilai Probabilitas Bayes</td>
                                 <td style="width:15px">:</td>
@@ -68,7 +105,7 @@
                                     </ul>
                                 </td>
                             </tr>
-                        </table>
+                        </table> -->
                         <!-- this row will not appear when printing -->
                         <div class="row no-print mt-3">
                             <div class="col-12">

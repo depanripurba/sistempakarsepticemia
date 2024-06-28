@@ -42,7 +42,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">
+                        <a class="nav-link" href="<?=base_url('master/konsultasi')?>">
                             <span class="menu-title">Riwayat Konsultasi</span>
                             <i class="mdi mdi-table-large menu-icon"></i>
                         </a>

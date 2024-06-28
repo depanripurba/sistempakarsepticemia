@@ -27,13 +27,11 @@
     <link rel="shortcut icon" href="<?=base_url('assets/img/')?>logo.png" />
 </head>
 
-<?php if($this->session->userdata('role')!=='Admin'):?>
 <style>
 .main-panel {
     width: 100% !important;
 }
 </style>
-<?php endif;?>
 
 <style>
 .proBanner {
@@ -79,9 +77,7 @@
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
                 <ul class="navbar-nav navbar-nav-left">
                     <li class="nav-item nav-profile dropdown">
-                        <div class="nav-profile-text">
-                            <p class="mb-1 text-black">Welcom Back : <b><?=$this->session->userdata('name')?></b></p>
-                        </div>
+
                     </li>
                 </ul>
                 <ul class="navbar-nav navbar-nav-right">
