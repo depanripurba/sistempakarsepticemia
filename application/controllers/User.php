@@ -61,7 +61,7 @@ class User extends CI_Controller
 		$pdf->Cell(50,10,'Kode Konsultasi',0,0, 'B');
 		$pdf->Cell(5,10,':',0,0, 'B');
 		$pdf->Cell(0,10,$diagnosa[0]->kode_konsultasi,0,1, 'B');
-		$pdf->Cell(50,10,'Nama Petani',0,0, 'B');
+		$pdf->Cell(50,10,'Nama Peternak',0,0, 'B');
 		$pdf->Cell(5,10,':',0,0, 'B');
 		$pdf->Cell(0,10,$diagnosa[0]->nama,0,1, 'B');
 		// Info
