@@ -109,8 +109,8 @@
                         <!-- this row will not appear when printing -->
                         <div class="row no-print mt-3">
                             <div class="col-12">
-                                <a href="<?=base_url('cetakhasil')?>" rel="noopener" target="_blank"
-                                    class="btn btn-success">
+                                <a href="<?=base_url('user/printDiagnosa/'.$userdata['kode_konsultasi'])?>"
+                                    rel="noopener" target="_blank" class="btn btn-success">
                                     <i class="fa fa-print"></i>
                                     Print
                                 </a>

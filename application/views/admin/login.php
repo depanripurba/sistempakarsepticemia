@@ -50,7 +50,9 @@
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <button type="submit" class="btn btn-success btn-fw">Login</button>
-                                    <button type="reset" class="btn btn-danger btn-fw">Cancel</button>
+                                    <a href="<?=base_url()?>" class="btn btn-danger btn-fw">
+                                        Kembali
+                                    </a>
                                 </div>
                             </form>
                         </div>

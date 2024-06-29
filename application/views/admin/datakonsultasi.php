@@ -36,11 +36,8 @@
                                     <td><?=$k->alamat;?></td>
                                     <td><?=$k->penyakit;?></td>
                                     <td>
-                                        <ul style="margin-bottom:0px!important">
-
-                                            <?php
+                                        <ul style="margin-bottom:0px!important"><?php
 										$data = explode('+',$k->solusi);
-
 										for($i=1;$i<count($data);$i++){
 											echo '<li>'. $data[$i] . '</li></br>';
 										}

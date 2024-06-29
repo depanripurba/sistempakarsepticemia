@@ -94,7 +94,7 @@
                         </span>
                     </li>
                     <li class="nav-item nav-logout d-none d-lg-block">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="#" onClick="document.location.reload(true)">
                             <i class="mdi mdi-refresh"></i>
                         </a>
                     </li>

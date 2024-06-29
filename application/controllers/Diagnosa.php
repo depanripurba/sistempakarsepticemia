@@ -133,7 +133,7 @@ class Diagnosa extends CI_Controller
         $propertiview['hasil'] = $hasildiagnosakirim;
         $propertiview['user'] = $this->session->userdata();
 		$propertiview['userdata'] = [
-			"kode_konsultasi"=>(int)$_POST['kode'],
+			"kode_konsultasi"=>$_POST['kode'],
 			"nama"=>$_POST['nama'],
 			"telepon"=>$_POST['telepon'],
 			"alamat"=>$_POST['alamat'],

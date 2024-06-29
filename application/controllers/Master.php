@@ -17,6 +17,8 @@ class Master extends CI_Controller
 		$this->load->model('Pasien_model');
 		$this->load->model('Basis_model');
 		$this->load->model('Konsultasi_model');
+		// Load FPDF (libraries)
+		$this->load->library('Pdf');
 	}
 
 
@@ -29,7 +31,7 @@ class Master extends CI_Controller
 		$data['gejala'] = $this->db->count_all_results();
 		$this->db->from('tbl_penyakit');
 		$data['penyakit'] = $this->db->count_all_results();
-		$this->db->from('tbl_pasien');
+		$this->db->from('tbl_konsultasi');
 		$data['pasien'] = $this->db->count_all_results();
 		$this->db->from('tbl_basispengetahuan');
 		$data['basispengetahuan'] = $this->db->count_all_results();
@@ -296,6 +298,187 @@ class Master extends CI_Controller
 		$this->load->view('template/sidebar', $data);
 		$this->load->view('admin/datakonsultasi',$data);
 		$this->load->view('template/footer');
+	}
+
+	public function laporan(){
+		error_reporting(0); // AGAR ERROR MASALAH VERSI PHP TIDAK MUNCUL
+		$report = $this->Konsultasi_model->getAllData();
+		$pdf = new FPDF('P', 'mm', 'A4');
+		$pdf->AddPage();
+		$logo_path = FCPATH . 'assets/img/logo.png';
+		$pdf->Image($logo_path,15,11,15);
+		$pdf->SetFont('Arial','B',16);
+		$pdf->Cell(0,7,'DINAS PERKEBUNAN DAN PETERNAKAN',0,1,'C');
+		$pdf->Cell(0,6,'PROVINSI SUMATERA UTARA',0,1,'C');
+		$pdf->SetFont('Arial','B',9);
+		$pdf->Cell(0,7,'Jl. Jenderal Besar A.H. Nasution No. 24, Pangkalan Masyhur, Kec. Medan',0,1,'C');
+		$pdf->Cell(0,2,'Johor, Kota Medan, Sumatera Utara',0,1,'C');
+		$pdf->Line(0,37,210,37);
+		$pdf->Line(0,37.5,210,37.5);
+		$pdf->SetFont('Arial','B',12);
+		$pdf->Cell(10,5,'',0,1);
+		$pdf->Cell(0,25,'LAPORAN HASIL RIWAYAT KONSULTASI',0,1,'C');
+
+		// New Table
+		$pdf->Cell(90,6,'Data Konsultasi',1,0,'C');
+		$pdf->Cell(100,6,'Data Diagnosa',1,1,'C');
+		$pdf->Cell(10,6,'No',1,0,'C');
+		$pdf->Cell(30,6,'Nama',1,0,'C');
+		$pdf->Cell(20,6,'No. Telp',1,0,'C');
+		$pdf->Cell(30,6,'Alamat',1,0,'C');
+		$pdf->Cell(30,6,'Diagnosa',1,0,'C');
+		$pdf->Cell(40,6,'Solusi',1,0,'C');
+		$pdf->Cell(30,6,'Tanggal',1,1,'C');
+
+		// Row Data
+		$no=0;
+		foreach ($report as $data){
+			$no++;
+
+			// Special Case pada nama
+
+			$cellWidth  = 60;
+			$cellHeight = 6;
+
+			// Periksa Apakah Teksnya melebihu kolom?
+			if($data->nama < $cellWidth){
+				// Jika Tidak
+				$line = 1;
+			}else{
+				// Jika Ya,
+				// Maka hitung ketinggian yang dibutuhkan untuk sel akan dirapikan dengan
+				// Memisahkan teks agar sesuai dengan lebar sel
+				// lalu kemudian Hitung berapa banayak baris yang dibutuhkan agar teks pas dengan sel
+
+				$textLength=strlen($data->nama);	//total panjang teks
+				$errMargin=5;		//margin kesalahan lebar sel, untuk jaga-jaga
+				$startChar=0;		//posisi awal karakter untuk setiap baris
+				$maxChar=0;			//karakter maksimum dalam satu baris, yang akan ditambahkan nanti
+				$textArray=array();	//untuk menampung data untuk setiap baris
+				$tmpString="";		//untuk menampung teks untuk setiap baris (sementara)
+
+				while($startChar < $textLength){
+					// Perulangan Sampai Akhir Teks
+					while($pdf->GetStringWidth($tmpString) < ($cellWidth-$errMargin) && ($startChar + $maxChar) < $textLength){
+						$maxChar++;
+						$tmpString=substr($data->nama,$startChar,$maxChar);
+					}
+					// Pindah ke baris berikutnya
+					$startChar=$startChar+$maxChar;
+					// Kemudian tambahkan ke dalam array sehingga kita tahu berapa banyak baris yang dibutuhkan
+					array_push($textArray,$tmpString);
+					// Reset variable penampung
+					$maxChar=0;
+					$tmpString='';
+				}
+				// Dapatkan jumlah baris
+				$line=count($textArray);
+			}
+
+			// Special Case pada sub_task
+			$pdf->Cell(10,($line * $cellHeight),$no,1,0, 'C');
+
+			//memanfaatkan MultiCell sebagai ganti Cell
+			//atur posisi xy untuk sel berikutnya menjadi di sebelahnya.
+			//ingat posisi x dan y sebelum menulis MultiCell
+			$xPos=$pdf->GetX();
+			$yPos=$pdf->GetY();
+			$pdf->MultiCell($cellWidth,$cellHeight,$data->nama,1);			
+			//kembalikan posisi untuk sel berikutnya di samping MultiCell 
+			//dan offset x dengan lebar MultiCell
+			$pdf->SetXY($xPos + $cellWidth , $yPos);
+	
+			$pdf->Cell(20,($line * $cellHeight),$data->satuan,1,0,'C');
+			$pdf->Cell(20,($line * $cellHeight),$data->volume,1,0,'C');
+			$pdf->Cell(40,($line * $cellHeight),'Rp ' . number_format($data->harga_satuan, 0, ',', '.'),1,0,'C');
+			$pdf->Cell(40,($line * $cellHeight),'Rp. '. number_format($data->total_harga, 0, ',', '.'),1,1,'C');
+			    // Tambahkan jumlah biaya pekerjaan ke total biaya
+			$total_biaya += $data->total_harga;
+		}
+		
+		// // Info
+		// $pdf->Cell(10,6,'No',1,0,'C');
+		// $pdf->Cell(60,6,'Uraian Pekerjaan',1,0,'C');
+		// $pdf->Cell(20,6,'Satuan',1,0,'C');
+		// $pdf->Cell(20,6,'Volume',1,0,'C');
+		// $pdf->Cell(40,6,'Harga Satuan (Rp)',1,0,'C');
+		// $pdf->Cell(40,6,'Jumlah Biaya (Rp)',1,1,'C');
+		// $pdf->SetFont('Arial','',10);
+		// $no=0;
+		// foreach ($report as $data){
+		// 	$no++;
+
+		// 	// Special Case pada sub_task
+
+		// 	$cellWidth  = 60;
+		// 	$cellHeight = 6;
+
+		// 	// Periksa Apakah Teksnya melebihu kolom?
+		// 	if($data->nama < $cellWidth){
+		// 		// Jika Tidak
+		// 		$line = 1;
+		// 	}else{
+		// 		// Jika Ya,
+		// 		// Maka hitung ketinggian yang dibutuhkan untuk sel akan dirapikan dengan
+		// 		// Memisahkan teks agar sesuai dengan lebar sel
+		// 		// lalu kemudian Hitung berapa banayak baris yang dibutuhkan agar teks pas dengan sel
+
+		// 		$textLength=strlen($data->nama);	//total panjang teks
+		// 		$errMargin=5;		//margin kesalahan lebar sel, untuk jaga-jaga
+		// 		$startChar=0;		//posisi awal karakter untuk setiap baris
+		// 		$maxChar=0;			//karakter maksimum dalam satu baris, yang akan ditambahkan nanti
+		// 		$textArray=array();	//untuk menampung data untuk setiap baris
+		// 		$tmpString="";		//untuk menampung teks untuk setiap baris (sementara)
+
+		// 		while($startChar < $textLength){
+		// 			// Perulangan Sampai Akhir Teks
+		// 			while($pdf->GetStringWidth($tmpString) < ($cellWidth-$errMargin) && ($startChar + $maxChar) < $textLength){
+		// 				$maxChar++;
+		// 				$tmpString=substr($data->nama,$startChar,$maxChar);
+		// 			}
+		// 			// Pindah ke baris berikutnya
+		// 			$startChar=$startChar+$maxChar;
+		// 			// Kemudian tambahkan ke dalam array sehingga kita tahu berapa banyak baris yang dibutuhkan
+		// 			array_push($textArray,$tmpString);
+		// 			// Reset variable penampung
+		// 			$maxChar=0;
+		// 			$tmpString='';
+		// 		}
+		// 		// Dapatkan jumlah baris
+		// 		$line=count($textArray);
+		// 	}
+
+		// 	// Special Case pada sub_task
+		// 	$pdf->Cell(10,($line * $cellHeight),$no,1,0, 'C');
+
+		// 	//memanfaatkan MultiCell sebagai ganti Cell
+		// 	//atur posisi xy untuk sel berikutnya menjadi di sebelahnya.
+		// 	//ingat posisi x dan y sebelum menulis MultiCell
+		// 	$xPos=$pdf->GetX();
+		// 	$yPos=$pdf->GetY();
+		// 	$pdf->MultiCell($cellWidth,$cellHeight,$data->nama,1);			
+		// 	//kembalikan posisi untuk sel berikutnya di samping MultiCell 
+		// 	//dan offset x dengan lebar MultiCell
+		// 	$pdf->SetXY($xPos + $cellWidth , $yPos);
+	
+		// 	$pdf->Cell(20,($line * $cellHeight),$data->satuan,1,0,'C');
+		// 	$pdf->Cell(20,($line * $cellHeight),$data->volume,1,0,'C');
+		// 	$pdf->Cell(40,($line * $cellHeight),'Rp ' . number_format($data->harga_satuan, 0, ',', '.'),1,0,'C');
+		// 	$pdf->Cell(40,($line * $cellHeight),'Rp. '. number_format($data->total_harga, 0, ',', '.'),1,1,'C');
+		// 	    // Tambahkan jumlah biaya pekerjaan ke total biaya
+		// 	$total_biaya += $data->total_harga;
+		// }
+		// MendapatkN PPN 10%
+		$ppn = $total_biaya * (10/100) ;
+		$pdf->SetFont('Arial','B',10);
+		$pdf->Cell(150,6,'Total Harga Pekerjaan Exlude PPN (10%)',1,0,'R');
+		$pdf->Cell(40,6,'Rp. '.number_format($ppn, 0, ',', '.'),1,1,'C');
+		$pdf->Cell(150,6,'Total Harga Pembulatan',1,0,'R');
+		$pdf->Cell(40,6,'Rp. '.number_format($total_biaya + $ppn, 0, ',', '.'),1,1,'C');
+		$dateNow = date("d-m-Y");
+		$pdf->Cell(190,30,'Medan, '.$dateNow,0,1,'R');
+		$pdf->Cell(190,20,'PT CIPTO SARANA NUSANTARA',0,1,'R');
+		$pdf->Output();
 	}
 
 	public function profile(){

@@ -16,6 +16,12 @@ class Konsultasi_model extends CI_Model
 		return $data;
 	}
 
+	public function selectData($kode)
+	{
+		$this->db->where('kode_konsultasi', $kode);
+		return $this->db->get('tbl_konsultasi')->result();
+	}
+
 	public function insertKonsultasi($data){
 		// Simpan Data ke dalam table Database
 		$this->db->insert('tbl_konsultasi',$data);
