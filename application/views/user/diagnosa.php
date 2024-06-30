@@ -12,7 +12,17 @@
                 <form action="<?=base_url('diagnosa/prosesdiagnosa')?>" method="post">
                     <div class="card">
                         <div class="card-header">
-                            <p class="card-title mt-3">Form Diagnosa Penyakit</p>
+							<div class="d-flex justify-content-between">
+								<p class="card-title mt-3">Form Diagnosa Penyakit</p>
+								<div class="form-group" style="margin:0px">
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="Kode Diagnosa">
+										<div class="input-group-append">
+										<button class="btn btn-sm btn-gradient-success py-3" type="button">Search</button>
+										</div>
+									</div>
+								</div>
+							</div>
                         </div>
                         <div class="card-body">
                             <div class="col-md-6 stretch-card">
