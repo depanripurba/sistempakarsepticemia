@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Update form fields with the data received
                 if (data.success === true) {
-					window.location.href = 'printDiagnosa/'+kode;
+					window.open('printDiagnosa/'+kode , '_blank');
                 } else {
                     alert('Data Konsultasi Tidak ditemukan');
                 }
