@@ -20,6 +20,11 @@ class User extends CI_Controller
 		$this->load->view('user/home',$data);
 	}
 
+	public function tentang(){
+		$data['judul']='SISTEM PAKAR - TENTANG';
+		$this->load->view('user/tentang',$data);
+	}
+
 	public function diagnosa(){
 		$data['judul']='SISTEM PAKAR DIAGNOSA ENDOKRIN - DIAGNOSA USER';
 		$data['aktif']='Diagnosa Pasien';

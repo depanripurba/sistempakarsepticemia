@@ -11,7 +11,7 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row">
+                        <div class="row d-flex" style="align-items:center" >
                             <div class="col-2">
                                 <img src="<?=base_url('assets/img/logo.png')?>" style="width:100%" alt="">
                             </div>
@@ -21,14 +21,9 @@
                                 <br>
                                 <br>
                                 <div>
-                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, iure
-                                        molestiae! Quis pariatur nesciunt sunt magnam consequuntur similique eligendi
-                                        praesentium impedit, ut unde non earum porro culpa illo alias quisquam. Lorem
-
-                                        ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus aut nemo, est
-                                        ullam aliquam, officiis sed recusandae eaque sequi nesciunt esse, id expedita
-                                        corporis temporibus repudiandae debitis? Rem, sint officia!
-                                    </span>
+                                    <p style="line-height:1.5em">
+									<?=$this->session->userdata('name')?> adalah Administrator Sistem untuk aplikasi sistem pakar diagnosa penyakit Foot and Mouth Disease (FMD) pada domba. Dengan latar belakang yang kuat dalam teknologi informasi dan pengalaman luas dalam pengelolaan sistem pakar, Budi bertanggung jawab untuk memastikan bahwa aplikasi ini berjalan dengan lancar dan efisien.
+                                    </p>
                                 </div>
                             </div>
                         </div>

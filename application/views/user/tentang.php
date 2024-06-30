@@ -16,6 +16,13 @@ body {
     width: 100%;
     font-family: 'Poppins', sans-serif;
 }
+.box-about{
+	max-width: 700px;
+	background: #00000080;
+	border: 1px solid #ddd;
+	padding: 20px;
+	border-radius: 12px;
+}
 </style>
 
 <body>
@@ -25,21 +32,21 @@ body {
                 <p class="header-text">SISTEM PAKAR</p>
             </div>
 			<div style="display: flex; align-items:center">
-				<a href="<?=base_url('user/tentang')?>"> TENTANG </a>
-				<a href="<?=base_url('login')?>"> LOGIN </a>
+				<a href="<?=base_url('')?>"> BACK </a>
 			</div>
         </div>
         <div class="center">
             <div>
-                <p class="center-text">Sistem Pakar Diagnosa Penyakit FMD<br>(Foot & Mouth) Disease</p>
-                <div class="divide-text"></div>
-                <p class="font-text">Selamat datang di sistem pakar diagnosa panyakit FMD<br>Food and Mouth pada domba
-                    menggunakan
-                    Teorema
-                    Bayes</p>
-                <a class="button-diagnosa" href="<?=base_url('user/diagnosa')?>">
-                    <span>MULAI MENDIAGNOSA</span>
-                </a>
+				<div class="box-about">
+					<p class="center-text">TENTANG APLIKASI</p>
+					<div class="divide-text"></div>
+					<p class="font-text">
+					Selamat datang di aplikasi sistem pakar kami yang dirancang khusus untuk mendiagnosa penyakit Foot and Mouth Disease (FMD) pada domba. Penyakit FMD merupakan salah satu penyakit menular yang sangat berbahaya dan dapat menyebabkan kerugian ekonomi yang signifikan dalam peternakan. Dengan menggunakan teknologi Teorema Bayes, aplikasi ini mampu memberikan diagnosa yang akurat dan cepat berdasarkan gejala-gejala yang ditunjukkan oleh domba.
+					</p>
+				</div>
+				<a class="button-diagnosa" href="<?=base_url('')?>">
+					<span>KEMBALI</span>
+				</a>
             </div>
             <img src="<?=base_url('assets/img/domba.png')?>" alt="">
         </div>
