@@ -4,7 +4,7 @@
             <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-success text-white me-2">
                     <i class="fa fa-cube"></i>
-                </span> List Basis Pengetahuan
+                </span> Data Riwayat Konsultasi
             </h3>
         </div>
         <div class="row">
