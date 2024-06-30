@@ -98,4 +98,23 @@ class User extends CI_Controller
 		$pdf->Cell(190,20,'Admin Sistem Pakar FMD',0,1,'R');
 		$pdf->Output();
 	}
+
+	public function searchKode() {
+        $kode = $this->input->post('kode');
+        
+        $result = $this->Konsultasi_model->selectData($kode);
+        
+		// var_dump($result);
+		$data = count($result);
+        if ($data > 0) {
+			echo json_encode(
+				[
+					'success' => true,
+					'kode' => $kode
+				]
+			);
+        } else {
+            echo json_encode(['success' => false]);
+        }
+    }
 }

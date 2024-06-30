@@ -16,7 +16,7 @@
 								<p class="card-title mt-3">Form Diagnosa Penyakit</p>
 								<div class="form-group" style="margin:0px">
 									<div class="input-group">
-										<input type="text" class="form-control" placeholder="Kode Diagnosa">
+										<input type="text" name="kode" class="form-control" placeholder="Kode Diagnosa">
 										<div class="input-group-append">
 										<button class="btn btn-sm btn-gradient-success py-3" type="button">Search</button>
 										</div>
@@ -104,3 +104,33 @@
 
 
 <!-- main-panel ends -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.btn-gradient-success').addEventListener('click', function() {
+        var kode = document.querySelector('input[name="kode"]').value;
+
+        // Buat objek XMLHttpRequest
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '<?= base_url('user/searchKode') ?>', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Parse response JSON
+                var data = JSON.parse(xhr.responseText);
+
+                // Update form fields with the data received
+                if (data.success === true) {
+					window.location.href = 'printDiagnosa/'+kode;
+                } else {
+                    alert('Data Konsultasi Tidak ditemukan');
+                }
+            }
+        };
+
+        // Kirim data dengan format URL encoded
+        xhr.send('kode=' + encodeURIComponent(kode));
+    });
+});
+</script>
