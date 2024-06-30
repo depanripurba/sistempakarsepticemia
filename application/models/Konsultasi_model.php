@@ -27,6 +27,15 @@ class Konsultasi_model extends CI_Model
 		$this->db->insert('tbl_konsultasi',$data);
 	}
 
+	public function delteKonsultasi($kode)
+	{
+		$this->db->where('kode_konsultasi', $kode);
+		$this->db->delete('tbl_konsultasi');
+
+		// Mengembalikan jumlah baris yang terpengaruh oleh operasi penghapusan
+		return $this->db->affected_rows();
+	}
+
 	public function getCode(){
 		return $this->generateKodeKonsultasi('K0');
 	}

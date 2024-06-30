@@ -21,9 +21,10 @@
                                     <th style="text-align:center;width: 120px">Nama Lengkap</th>
                                     <th style="text-align:center;width: 100px">No. Telp</th>
                                     <th style="text-align:center;width: 150px">Alamat</th>
-                                    <th style="text-align:center;width: 205px">Penyakit</th>
+                                    <th style="text-align:center;width: 100px">Penyakit</th>
                                     <th style="text-align:center;width: 150px">Solusi</th>
                                     <th style="text-align:center;width: 110px">Tanggal</th>
+                                    <th style="text-align:center;width: 50px">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -45,6 +46,15 @@
                                         </ul>
                                     </td>
                                     <td><?=$k->tanggal;?></td>
+                                    <td>
+                                        <a class="d-flex justify-content-center"
+                                            onclick="return confirm('Anda yakin ingin menghapus Data Konsultasi ini?')"
+                                            href="<?=site_url('Master/deleteKonsultasi/'.$k->kode_konsultasi)?>">
+                                            <button type="button" class="btn btn-inverse-danger btn-icon">
+                                                <i class="mdi mdi-delete"></i>
+                                            </button>
+                                        </a>
+                                    </td>
                                 </tr>
                                 <?php endforeach ;?>
                             </tbody>
