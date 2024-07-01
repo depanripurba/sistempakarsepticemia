@@ -17,8 +17,7 @@ class Master extends CI_Controller
 		$this->load->model('Pasien_model');
 		$this->load->model('Basis_model');
 		$this->load->model('Konsultasi_model');
-		// Load FPDF (libraries)
-		$this->load->library('Pdf');
+
 	}
 
 
@@ -310,120 +309,14 @@ class Master extends CI_Controller
 	}
 
 	public function laporan(){
-		error_reporting(0); // AGAR ERROR MASALAH VERSI PHP TIDAK MUNCUL
-		$report = $this->Konsultasi_model->getAllData();
-		$pdf = new FPDF('P', 'mm', 'A4');
-		$pdf->AddPage();
-		$logo_path = FCPATH . 'assets/img/logo.png';
-		$pdf->Image($logo_path,15,11,15);
-		$pdf->SetFont('Arial','B',16);
-		$pdf->Cell(0,7,'DINAS PERKEBUNAN DAN PETERNAKAN',0,1,'C');
-		$pdf->Cell(0,6,'PROVINSI SUMATERA UTARA',0,1,'C');
-		$pdf->SetFont('Arial','B',9);
-		$pdf->Cell(0,7,'Jl. Jenderal Besar A.H. Nasution No. 24, Pangkalan Masyhur, Kec. Medan',0,1,'C');
-		$pdf->Cell(0,2,'Johor, Kota Medan, Sumatera Utara',0,1,'C');
-		$pdf->Line(0,37,210,37);
-		$pdf->Line(0,37.5,210,37.5);
-		$pdf->SetFont('Arial','B',12);
-		$pdf->Cell(10,5,'',0,1);
-		$pdf->Cell(0,25,'LAPORAN HASIL RIWAYAT KONSULTASI',0,1,'C');
-
-		// New Table
-		$pdf->Cell(100,6,'Data Konsultasi',1,0,'C');
-		$pdf->Cell(90,6,'Data Diagnosa',1,1,'C');
-		$pdf->Cell(10,6,'No',1,0,'C');
-		$pdf->Cell(30,6,'Nama',1,0,'C');
-		$pdf->Cell(30,6,'No. Telp',1,0,'C');
-		$pdf->Cell(30,6,'Alamat',1,0,'C');
-		$pdf->Cell(30,6,'Diagnosa',1,0,'C');
-		$pdf->Cell(35,6,'Solusi',1,0,'C');
-		$pdf->Cell(25,6,'Tanggal',1,1,'C');
-		$pdf->SetFont('Arial','',10);
-
-		// Row Data
-		$no=0;
-		foreach ($report as $data){
-			$no++;
-
-			// Special Case pada nama
-
-			$cellWidth  = 30;
-			$cellHeight = 6;
-
-			// Periksa Apakah Teksnya melebihu kolom?
-			if($data->nama < $cellWidth){
-				// Jika Tidak
-				$line = 1;
-			}else{
-				// Jika Ya,
-				// Maka hitung ketinggian yang dibutuhkan untuk sel akan dirapikan dengan
-				// Memisahkan teks agar sesuai dengan lebar sel
-				// lalu kemudian Hitung berapa banayak baris yang dibutuhkan agar teks pas dengan sel
-
-				$textLength=strlen($data->nama);	//total panjang teks
-				$errMargin=5;		//margin kesalahan lebar sel, untuk jaga-jaga
-				$startChar=0;		//posisi awal karakter untuk setiap baris
-				$maxChar=0;			//karakter maksimum dalam satu baris, yang akan ditambahkan nanti
-				$textArray=array();	//untuk menampung data untuk setiap baris
-				$tmpString="";		//untuk menampung teks untuk setiap baris (sementara)
-
-				while($startChar < $textLength){
-					// Perulangan Sampai Akhir Teks
-					while($pdf->GetStringWidth($tmpString) < ($cellWidth-$errMargin) && ($startChar + $maxChar) < $textLength){
-						$maxChar++;
-						$tmpString=substr($data->nama,$startChar,$maxChar);
-					}
-					// Pindah ke baris berikutnya
-					$startChar=$startChar+$maxChar;
-					// Kemudian tambahkan ke dalam array sehingga kita tahu berapa banyak baris yang dibutuhkan
-					array_push($textArray,$tmpString);
-					// Reset variable penampung
-					$maxChar=0;
-					$tmpString='';
-				}
-				// Dapatkan jumlah baris
-				$line=count($textArray);
-			}
-
-			// Tinggi cell solusi
-			$solusi = $data->solusi;
-			$pecah = explode('+',$solusi);
-			$h = count($pecah)-1;
-
-			// Special Case pada sub_task
-			$pdf->Cell(10,($line * ($cellHeight * $h)),$no,1,0, 'C');
-
-			//memanfaatkan MultiCell sebagai ganti Cell
-			//atur posisi xy untuk sel berikutnya menjadi di sebelahnya.
-			//ingat posisi x dan y sebelum menulis MultiCell
-			$xPos=$pdf->GetX();
-			$yPos=$pdf->GetY();
-			$pdf->MultiCell($cellWidth,($cellHeight * $h),$data->nama,1);
-			//kembalikan posisi untuk sel berikutnya di samping MultiCell 
-			//dan offset x dengan lebar MultiCell
-			$pdf->SetXY($xPos + $cellWidth , $yPos);
-	
-			$pdf->Cell(30,($line * ($cellHeight * $h)),$data->telepon,1,0,'C');
-			$pdf->Cell(30,($line * ($cellHeight * $h)),$data->alamat,1,0,'C');
-			$pdf->Cell(30,($line * ($cellHeight * $h)),$data->penyakit,1,0,'C');
-			
-			// Solusi
-
-			$xPos=$pdf->GetX();
-			$yPos=$pdf->GetY();
-			$pdf->MultiCell(35,($line * $cellHeight),$data->solusi,1);
-			$pdf->SetXY($xPos+5 + $cellWidth , $yPos);
-			// Dapat disimpulkan 1 baris solusi, tinggi cellnya 6;
-
-			$pdf->Cell(25,($line * ($cellHeight * $h)),$data->tanggal,1,1,'C');
-		}
-		$pdf->Cell(190,10,'',0,1,'R');
-		$pdf->Cell(190,10,'Mengetahui',0,1,'R');
-		$pdf->Cell(190,0,'Dokter Spesialis Hewan',0,1,'R');
-		$pdf->Cell(190,20,'',0,1,'R');
-		$pdf->SetFont('Arial','B',11);
-		$pdf->Cell(190,20,'drh. Lia Brutu',0,1,'R');
-		$pdf->Output();
+		$this->load->library('pdf');
+		$this->pdf->set_option('isRemoteEnabled', true);
+		// $data['riwayat'] = $this->Riwayat_model->getAllData();
+		// $customPaper = array(0,0,700,700);
+		$data['report'] = $this->Konsultasi_model->getAllData();
+		$this->pdf->setPaper('a4', 'portrait');
+		$this->pdf->filename = "laporanriwayat.pdf";
+		$this->pdf->load_view('admin/cetaklaporan',$data);
 	}
 
 	public function profile(){
