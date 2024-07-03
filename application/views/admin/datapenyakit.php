@@ -11,10 +11,10 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header" align="right">
-                        <a class="btn btn-success" href="<?= base_url('tambahdatapenyakit') ?>">
+                        <!-- <a class="btn btn-success" href="<?= base_url('tambahdatapenyakit') ?>">
                             <i class="mdi mdi-plus"></i>
                             <span>Tambah Data Penyakit Baru</span>
-                        </a>
+                        </a> -->
                     </div>
                     <div class="card-body">
                         <?=$this->session->flashdata('message');?>
@@ -54,11 +54,11 @@
                                                 <i class="mdi mdi-pen"></i>
                                             </button>
                                         </a>
-                                        <a href="<?= base_url('hapuspenyakit/' . $data->kode_penyakit) ?>">
+                                        <!-- <a href="<?= base_url('hapuspenyakit/' . $data->kode_penyakit) ?>">
                                             <button type="button" class="btn btn-inverse-danger btn-icon">
                                                 <i class="mdi mdi-delete"></i>
                                             </button>
-                                        </a>
+                                        </a> -->
                                     </td>
                                     <?php $nomor++ ?>
                                     <?php endforeach ?>

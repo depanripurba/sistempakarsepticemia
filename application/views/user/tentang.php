@@ -31,9 +31,6 @@ body {
             <div class="header-brand">
                 <p class="header-text">SISTEM PAKAR</p>
             </div>
-			<div style="display: flex; align-items:center">
-				<a href="<?=base_url('')?>"> BACK </a>
-			</div>
         </div>
         <div class="center">
             <div>
