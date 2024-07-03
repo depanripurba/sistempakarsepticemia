@@ -69,7 +69,6 @@
             </div>
         </div>
         <!-- partial:partials/_navbar.html -->
-        <?php if($this->session->userdata('role')==='Admin'): ?>
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start p-2">
 
@@ -90,7 +89,7 @@
                         </span>
                     </li>
                     <li class="nav-item nav-logout d-none d-lg-block">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="#" onClick="document.location.reload(true)">
                             <i class="mdi mdi-refresh"></i>
                         </a>
                     </li>
@@ -101,4 +100,3 @@
                 </button>
             </div>
         </nav>
-        <?php endif;?>
