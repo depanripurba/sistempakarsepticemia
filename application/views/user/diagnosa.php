@@ -25,8 +25,9 @@
 							</div>
                         </div>
                         <div class="card-body">
-                            <div class="col-md-6 stretch-card">
-                                <div class="card">
+							<div class="col-md-6 stretch-card">
+								<div class="card">
+								<?=$this->session->flashdata('self');?>
 								<div class="form-group row">
                                         <label for="c_kode" class="col-sm-3 col-form-label">Kode Diagnosa</label>
                                         <div class="col-sm-9">
@@ -58,6 +59,7 @@
                                     </div>
                                 </div>
                             </div>
+							<?=$this->session->flashdata('gejala');?>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>

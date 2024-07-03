@@ -141,7 +141,10 @@ class Diagnosa extends CI_Controller
 		// var_dump($propertiview['userdata'],$propertiview['hasil']);die;
 
 		$gejalaselected =  $hasildiagnosakirim['gejalacentang'];
-		// var_dump($gejalaselected);die;
+
+		// Check Total Gejala yang dipilih harus => 4
+		$totSel = count($gejalaselected);
+		// var_dump($gejalaselected,$totSel);die;
 
 		// Simpan Hasil Ke Dalam Database
 		$data_to_Insert = [
@@ -153,6 +156,26 @@ class Diagnosa extends CI_Controller
 			"solusi"=>$propertiview['hasil']['solusi'],
 			"tanggal"=>date('d / M / Y')
 		];
+
+		if($data_to_Insert['nama']==='' && $data_to_Insert['telepon']==='' && $data_to_Insert['alamat']===''){
+			$this->session->set_flashdata('self', '
+			<div class="alert alert-danger mb-2" role="alert">
+				Anda Harus Melengkapi Data Diri
+			</div>
+			');
+			redirect('user/diagnosa');
+		}
+
+
+		if($totSel < 3){
+			$this->session->set_flashdata('gejala', '
+			<div class="alert alert-danger mb-2" role="alert">
+				Anda Harus Memilih <b>Minimal 4 Gejala</b>
+			</div>
+			');
+			redirect('user/diagnosa');
+		}
+
 		// var_dump($data_to_Insert);die;
 		$insertData = $this->Konsultasi_model->insertKonsultasi($data_to_Insert);
 

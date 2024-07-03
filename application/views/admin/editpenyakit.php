@@ -21,7 +21,7 @@
                                 <div class="form-group">
                                     <label for="namapenyakit">Nama Penyakit</label>
                                     <input value="<?=$dataedit[0]->nama_penyakit?>" name="nama_penyakit" type="text"
-                                        class="form-control" id="namapenyakit" placeholder="Nama Penyakit...">
+                                        class="form-control" id="namapenyakit" placeholder="Nama Penyakit..." disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="solusi">Solusi</label>

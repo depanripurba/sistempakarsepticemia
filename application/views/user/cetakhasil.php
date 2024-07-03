@@ -32,6 +32,7 @@
             <td>Nama Petenak </td>
             <td>No Telp </td>
             <td>alamt</td>
+            <td>Penyakit</td>
             <td>Solusi</td>
         </tr>
         <tr>
@@ -55,7 +56,7 @@
         </tr>
 
     </table>
-    <div style="text-align: right;width:300px;margin-left:300px">
+    <div style="text-align: right">
         <p><b>Mengetahui</b> </p>
         <p style="margin-top:-15px"><b>Dokter Spesialis Hewan</b></p>
         <br><br>
