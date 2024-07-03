@@ -28,6 +28,11 @@ class Diagnosa extends CI_Controller
             }
         }
         if (count($newdata) < 1) {
+			$this->session->set_flashdata('self', '
+			<div class="alert alert-danger" role="alert" style="margin-bottom:30px">
+				Anda Harus <b>Melengkapi Data</b>
+			</div>
+			');
             redirect('diagnosa');
         }
         //proses filterisasi
@@ -159,7 +164,7 @@ class Diagnosa extends CI_Controller
 
 		if($data_to_Insert['nama']==='' && $data_to_Insert['telepon']==='' && $data_to_Insert['alamat']===''){
 			$this->session->set_flashdata('self', '
-			<div class="alert alert-danger mb-2" role="alert">
+			<div class="alert alert-danger mb-2" role="alert" style="margin-bottom:30px">
 				Anda Harus Melengkapi Data Diri
 			</div>
 			');
@@ -169,7 +174,7 @@ class Diagnosa extends CI_Controller
 
 		if($totSel < 3){
 			$this->session->set_flashdata('gejala', '
-			<div class="alert alert-danger mb-2" role="alert">
+			<div class="alert alert-danger mb-2" role="alert" style="margin-bottom:30px">
 				Anda Harus Memilih <b>Minimal 4 Gejala</b>
 			</div>
 			');
